@@ -10,7 +10,7 @@ Requires Java 11 or later.
 <dependency>
   <groupId>com.commspliant</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 

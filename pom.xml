@@ -6,7 +6,7 @@
 
     <groupId>com.commspliant</groupId>
     <artifactId>sdk</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <name>CommsPliant Java SDK</name>
     <description>Official CommsPliant Customer Integration API SDK for Java</description>
     <url>https://developer.commspliant.com/</url>

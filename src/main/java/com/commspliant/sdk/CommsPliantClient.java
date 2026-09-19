@@ -47,9 +47,6 @@ public final class CommsPliantClient {
 
         Map<String, Object> payload = new LinkedHashMap<>();
         payload.put("templateId", request.getTemplateId());
-        if (request.getTemplateVersionId() != null && !request.getTemplateVersionId().isBlank()) {
-            payload.put("templateVersionId", request.getTemplateVersionId());
-        }
         payload.put("variables", request.getVariables());
 
         String json = JsonSupport.toJson(payload);

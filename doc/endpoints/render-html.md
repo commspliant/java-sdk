@@ -44,7 +44,7 @@ Resolves an **approved** template version and returns rendered HTML as a streame
 ## SDK example
 
 ```java
-import com.commspliant.sdk.CommsPliantClient; // TODO: replace with real SDK import once published
+import com.commspliant.sdk.CommsPliantClient;
 import com.commspliant.sdk.RenderRequest;
 import com.commspliant.sdk.RenderResult;
 
@@ -54,7 +54,6 @@ import java.util.Map;
 
 public class RenderHtmlExample {
     public static void main(String[] args) throws Exception {
-        // TODO: replace with real SDK call once published
         CommsPliantClient client = new CommsPliantClient("ck_YOUR_API_KEY");
 
         RenderRequest request = RenderRequest.builder()

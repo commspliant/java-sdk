@@ -6,11 +6,15 @@ Requires Java 11 or later.
 
 ## Installation
 
-```bash
-mvn install
+```xml
+<dependency>
+  <groupId>com.commspliant</groupId>
+  <artifactId>sdk</artifactId>
+  <version>0.1.0</version>
+</dependency>
 ```
 
-Or clone this repository and add it as a Maven dependency from your local build.
+To work on the SDK itself, clone this repository and run `mvn install`.
 
 ## Quickstart
 
@@ -57,5 +61,6 @@ Endpoint guides and SDK usage examples: [doc/README.md](doc/README.md)
 
 ## Links
 
+- [Maven Central](https://central.sonatype.com/artifact/com.commspliant/sdk)
 - [Developer Portal](https://developer.commspliant.com/)
 - [About CommsPliant](https://commspliant.com/)

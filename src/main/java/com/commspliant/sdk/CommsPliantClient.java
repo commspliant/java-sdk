@@ -42,6 +42,25 @@ public final class CommsPliantClient {
         return postRender("/api/v1/render/pdf", request);
     }
 
+    public Map<String, String> submitRenderBatch(Map<String, Object> payload) throws IOException, InterruptedException {
+        String json = JsonSupport.toJson(payload);
+        HttpRequest.Builder builder = HttpRequest.newBuilder()
+                .uri(URI.create(baseUrl + "/api/v1/render/batches"))
+                .timeout(Duration.ofSeconds(60))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(json));
+        if (useBearerAuth) {
+            builder.header("Authorization", "Bearer " + apiKey);
+        } else {
+            builder.header("X-Api-Key", apiKey);
+        }
+        HttpResponse<String> response = httpClient.send(builder.build(), HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 202) {
+            throw parseAPIError(response.statusCode(), response.body().getBytes(), response.headers().firstValue("X-Request-ID").orElse(""));
+        }
+        return JsonSupport.parseStringMap(response.body());
+    }
+
     private RenderResult postRender(String path, RenderRequest request) throws IOException, InterruptedException {
         validateRenderRequest(request);
 

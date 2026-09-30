@@ -23,6 +23,15 @@ final class JsonSupport {
         return builder.toString();
     }
 
+    static Map<String, String> parseStringMap(String json) {
+        Map<String, Object> raw = parseObject(json.getBytes(StandardCharsets.UTF_8));
+        Map<String, String> out = new LinkedHashMap<>();
+        for (Map.Entry<String, Object> entry : raw.entrySet()) {
+            out.put(entry.getKey(), entry.getValue() == null ? "" : String.valueOf(entry.getValue()));
+        }
+        return out;
+    }
+
     static Map<String, Object> parseObject(byte[] body) {
         String json = new String(body, StandardCharsets.UTF_8).trim();
         if (!json.startsWith("{") || !json.endsWith("}")) {

@@ -42,10 +42,18 @@ public final class CommsPliantClient {
         return postRender("/api/v1/render/pdf", request);
     }
 
-    public Map<String, String> submitRenderBatch(Map<String, Object> payload) throws IOException, InterruptedException {
+    public Map<String, String> submitRenderBatchHtml(Map<String, Object> payload) throws IOException, InterruptedException {
+        return submitRenderBatch("/api/v1/render/batches/html", payload);
+    }
+
+    public Map<String, String> submitRenderBatchPdf(Map<String, Object> payload) throws IOException, InterruptedException {
+        return submitRenderBatch("/api/v1/render/batches/pdf", payload);
+    }
+
+    private Map<String, String> submitRenderBatch(String path, Map<String, Object> payload) throws IOException, InterruptedException {
         String json = JsonSupport.toJson(payload);
         HttpRequest.Builder builder = HttpRequest.newBuilder()
-                .uri(URI.create(baseUrl + "/api/v1/render/batches"))
+                .uri(URI.create(baseUrl + path))
                 .timeout(Duration.ofSeconds(60))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(json));
